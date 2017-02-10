@@ -27,7 +27,7 @@ export class Question {
     }
 
     getReactionFromAnswer(answer: Answer): Reaction {
-        const reactionsArr = this.reactions.filter(reaction => reaction.isReaction(this, answer));
+        const reactionsArr = this.reactions.filter(reaction => reaction.isReactionForAnswer(this, answer));
         return reactionsArr.length > 0 ? reactionsArr[0] : this.defaultReaction;
     }
 }

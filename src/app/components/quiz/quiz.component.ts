@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { Quiz } from '../../models/quiz';
 import { Answer } from '../../models/answer';
+import { QuizReaction } from '../../models/quiz-reaction';
 
 @Component({
     selector: 'app-quiz',
@@ -13,6 +14,8 @@ export class QuizComponent {
     @Input() quiz: Quiz;
     activeQuestionIndex = 0;
     isOver = false;
+    isStarted = false;
+    reaction: QuizReaction;
 
     constructor(private _quizService: QuizService) {}
 
@@ -62,15 +65,35 @@ export class QuizComponent {
 
     onQuizOver() {
         this.isOver = true;
+        this.setQuizReaction();
+    }
+
+    setQuizReaction() {
+        let bestReaction;
+        for (const reaction of this.quiz.quizReactions) {
+            if (reaction.isBetter(this.quiz, bestReaction)) { bestReaction = reaction; }
+        }
+
+        this.reaction = bestReaction;
     }
 
     getIsOverText() {
-        return 'The Quiz is Over!';
+        return this.reaction.content;
+    }
+
+    startQuiz() {
+        this.isStarted = true;
     }
 
     restartQuiz() {
         this.isOver = false;
+        this.isStarted = false;
         this.activeQuestionIndex = 0;
+        this.reaction = undefined;
         this.quiz.resetQuiz();
+    }
+
+    shouldShowQuestions() {
+        return this.isStarted && !this.isOver;
     }
 }

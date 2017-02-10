@@ -3,6 +3,7 @@ import { Quiz } from '../models/quiz';
 import { Question } from '../models/question';
 import { Answer } from '../models/answer';
 import { Reaction } from '../models/reaction';
+import { QuizReaction } from '../models/quiz-reaction';
 
 @Injectable()
 
@@ -17,7 +18,8 @@ export class QuizService {
         this.quiz = new Quiz({
             title: 'Best Quiz Ever',
             welcomeText: 'Welcome to the best quiz ever',
-            questions: this.getQuestions()
+            questions: this.getQuestions(),
+            quizReactions: this.getQuizReactions()
         });
     }
 
@@ -56,6 +58,23 @@ export class QuizService {
                 defaultReaction: new Reaction({content: 'bad', type: 'incorrect'}),
                 required: false
             })
+        ];
+    }
+
+    getQuizReactions() {
+        return [
+            new QuizReaction({
+                content: 'Whoa Great Job!',
+                minPercentage: 1
+            }),
+            new QuizReaction({
+                content: 'Okay Job!',
+                minPercentage: 0.5
+            }),
+            new QuizReaction({
+                content: 'Wow you suck!',
+                minPercentage: 0
+            }),
         ];
     }
 }

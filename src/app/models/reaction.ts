@@ -14,7 +14,7 @@ export class Reaction {
         this[key] = attirbutes[key];
     }
 
-    isReaction(question: Question, answer: Answer): boolean {
+    isReactionForAnswer(question: Question, answer: Answer): boolean {
         return this.getAnswerStrings(question).indexOf(answer.content.toUpperCase()) !== -1;
     }
 

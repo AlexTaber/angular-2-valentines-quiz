@@ -1,10 +1,15 @@
 <div class="quiz-wrapper">
-    <div class="quiz-info">
-        <p>{{ quiz?.participant }} {{ quiz?.score }} of {{ quiz?.maxScore }}</p>
+    <div *ngIf="isStarted" class="quiz-info">
+        <p>{{ quiz?.participant }} Score: {{ quiz?.score }} of {{ quiz?.maxScore }}</p>
     </div>
 
     <div class="quiz-content">
-        <app-question *ngIf="!isOver"
+        <div *ngIf="!isStarted" class="quiz-start">
+            <p>{{ quiz?.welcomeText }}</p>
+            <button (click)="startQuiz()">Let's Get Started</button>
+        </div>
+
+        <app-question *ngIf="shouldShowQuestions()"
                     [question]="getActiveQuestion()"
                     (nextQuestionEmitter)="onNextQuestion()"
                     (checkAnswerEmitter)="onAnswer($event)"

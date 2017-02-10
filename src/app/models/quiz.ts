@@ -1,4 +1,5 @@
 import { Question } from '../models/question';
+import { QuizReaction } from './quiz-reaction';
 
 export class Quiz {
     participant: string;
@@ -7,6 +8,7 @@ export class Quiz {
     welcomeText: string;
     score = 0;
     maxScore: number;
+    quizReactions: QuizReaction[];
 
     constructor(attributes) {
         for (const key of Object.keys(attributes)) { this.setAttribute(key, attributes); }
