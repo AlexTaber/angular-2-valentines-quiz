@@ -30,7 +30,7 @@ button {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    width: 95vw;
+    width: calc(90vw - 66px);
     max-width: 300px;
 }
 
