@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MainService } from './services/main.service';
-import { QuestionsService } from './services/questions.service';
+import { QuizService } from './services/quiz.service';
 
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './components/question/question.component';
@@ -22,7 +22,7 @@ import { ReactionComponent } from './components/reaction/reaction.component';
     FormsModule,
     HttpModule
   ],
-  providers: [MainService, QuestionsService],
+  providers: [MainService, QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

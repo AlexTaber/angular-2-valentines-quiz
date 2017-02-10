@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MainService } from './services/main.service';
-import { QuestionsService } from './services/questions.service';
+import { QuizService } from './services/quiz.service';
 
 @Component({
     selector: 'app-root',
@@ -9,17 +9,17 @@ import { QuestionsService } from './services/questions.service';
 })
 
 export class AppComponent {
-    constructor( private _mainService: MainService, private _questionsService: QuestionsService) {}
+    constructor( private _mainService: MainService, private _quizService: QuizService) {}
 
     getName() {
     return this._mainService.name;
     }
 
     getActiveQuestion() {
-        return this._questionsService.getActiveQuestion();
+        return this._quizService.getActiveQuestion();
     }
 
     nextQuestion() {
-        this._questionsService.incrementQuestion();
+        this._quizService.incrementQuestion();
     }
 }

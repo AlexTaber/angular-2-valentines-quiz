@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Quiz } from '../models/quiz';
 import { Question } from '../models/question';
 import { Answer } from '../models/answer';
 import { Reaction } from '../models/reaction';
 
 @Injectable()
 
-export class QuestionsService {
-    questions: Question[] = this.setQuestions();
+export class QuizService {
+    quiz: Quiz;
     activeQuestionIndex = 0;
 
-    setQuestions() {
+    constructor() {
+        this.setQuiz();
+    }
+
+    setQuiz() {
+        this.quiz = new Quiz({
+            title: 'Best Quiz Ever',
+            welcomeText: 'Welcome to the best quiz ever',
+            questions: this.getQuestions()
+        });
+    }
+
+    getQuestions() {
         return [
             new Question({
                 content: 'Hi, what is your name?',
@@ -47,10 +60,10 @@ export class QuestionsService {
     }
 
     getActiveQuestion() {
-        return this.questions[this.activeQuestionIndex];
+        return this.quiz.questions[this.activeQuestionIndex];
     }
 
     incrementQuestion() {
-        this.activeQuestionIndex = (this.activeQuestionIndex + 1) % this.questions.length;
+        this.activeQuestionIndex = (this.activeQuestionIndex + 1) % this.quiz.questions.length;
     }
 }
