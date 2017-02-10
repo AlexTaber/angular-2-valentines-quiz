@@ -3,14 +3,16 @@
         <p>{{ quiz?.participant }} {{ quiz?.score }} of {{ quiz?.maxScore }}</p>
     </div>
 
-    <app-question *ngIf="!isOver"
-                  [question]="getActiveQuestion()"
-                  (nextQuestionEmitter)="onNextQuestion()"
-                  (checkAnswerEmitter)="onAnswer($event)"
-    ></app-question>
+    <div class="quiz-content">
+        <app-question *ngIf="!isOver"
+                    [question]="getActiveQuestion()"
+                    (nextQuestionEmitter)="onNextQuestion()"
+                    (checkAnswerEmitter)="onAnswer($event)"
+        ></app-question>
 
-    <div *ngIf="isOver" class="quiz-over">
-        <p>{{ getIsOverText() }}</p>
-        <button (click)="restartQuiz()">Take Quiz Again</button>
+        <div *ngIf="isOver" class="quiz-over">
+            <p>{{ getIsOverText() }}</p>
+            <button (click)="restartQuiz()">Take Quiz Again</button>
+        </div>
     </div>
 </div>
