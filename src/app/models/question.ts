@@ -7,6 +7,7 @@ export class Question {
     answers: Answer[];
     reactions: Reaction[];
     correctAnswerIndices: number[];
+    defaultReaction: Reaction;
 
     constructor(attributes) {
         for (const key of Object.keys(attributes)) { this.setAttribute(key, attributes); }
@@ -17,28 +18,7 @@ export class Question {
     }
 
     getReactionFromAnswer(answer): Reaction {
-        return this.isAnswer(answer) ? this.getGoodReaction() : this.getBadReaction();
-    }
-
-    getGoodReaction(): Reaction {
-        const reactionArr = this.reactions.filter(reaction => reaction.type === 'correct');
-        return reactionArr.length > 0 ? reactionArr[0] : undefined;
-    }
-
-    getBadReaction(): Reaction {
-        const reactionArr = this.reactions.filter(reaction => reaction.type === 'incorrect');
-        return reactionArr.length > 0 ? reactionArr[0] : undefined;
-    }
-
-    isAnswer(answer: string): boolean {
-        return this.getCorrectAnswerStrings().indexOf(answer.toUpperCase()) !== -1;
-    }
-
-    getCorrectAnswerStrings(): string[] {
-        return this.getCorrectAnswers().map(answer => answer.content.toUpperCase());
-    }
-
-    getCorrectAnswers(): Answer[] {
-        return this.correctAnswerIndices.map(index => this.answers[index]);
+        const reactionsArr = this.reactions.filter(reaction => reaction.isReaction(this, answer));
+        return reactionsArr.length > 0 ? reactionsArr[0] : this.defaultReaction;
     }
 }
