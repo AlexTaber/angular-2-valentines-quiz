@@ -16,9 +16,22 @@ export class QuestionsService {
                 type: 'input',
                 answers: [ new Answer({content: 'Kim Castelli'}),
                            new Answer({content: 'Kim'}),
-                           new Answer({content: 'Kimberly'}), ],
-                reactions: [ new Reaction({content: 'Good', type: 'correct', answerIndices: [0, 1, 2] }) ],
-                defaultReaction: new Reaction({content: 'bad', type: 'incorrect'}),
+                           new Answer({content: 'Kimberly'}),
+                           new Answer({content: 'Alex'}),
+                           new Answer({content: 'Alex Taber'}),
+                         ],
+                reactions: [ new Reaction({content: `Oh my god, you are even sexier than Alex had programmed me to believe.
+                                                     <br><br>So sorry, I'm sure you're terribly confused as to what's happening.
+                                                      Welcome to the world's most rediculously romantic Valentine's Day quiz ever!`,
+                                           type: 'correct',
+                                           answerIndices: [0, 1, 2] }),
+                             new Reaction({content: 'Ugh, not him. He\'s the worst',
+                                           type: 'incorrect',
+                                           answerIndices: [3, 4] }),
+                           ],
+                defaultReaction: new Reaction({content: `Hmm, so sorry. This unfathomably romantic Valentines Day quiz
+                                                         is intended for Kim Castelli.`,
+                                               type: 'incorrect'}),
                 required: true
             }),
             new Question({

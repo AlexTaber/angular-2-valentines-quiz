@@ -1,8 +1,37 @@
 .question-wrapper {
+    width: 100%;
     text-align: center;
+
+    .question-content-wrapper {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
     .question-content {
         font-size: 3rem;
         color: #fff;
+
+        h5 {
+            margin-bottom: 20px;
+        }
     }
+}
+
+button, .answers-wrapper, .question-content {
+    opacity: 0;
+    -webkit-animation: anim-fade-in 1s ; /* Safari 4+ */
+    -moz-animation:    anim-fade-in 1s ; /* Fx 5+ */
+    -o-animation:      anim-fade-in 1s ; /* Opera 12+ */
+    animation:         anim-fade-in 1s ; /* IE 10+, Fx 29+ */
+    animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+button {
+    -webkit-animation-delay: 0.5s; /* Safari 4+ */
+    -moz-animation-delay:    0.5s; /* Fx 5+ */
+    -o-animation-delay:      0.5s; /* Opera 12+ */
+    animation-delay:         0.5s; /* IE 10+, Fx 29+ */
 }

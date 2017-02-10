@@ -1,30 +1,32 @@
 <div class="question-wrapper">
-    <div class="question-content">
-        <h3>{{ question?.content }}</h3>
-    </div>
-
-    <app-reaction *ngIf="reaction" [reaction]="reaction"></app-reaction>
-    
-    <div *ngIf="shouldShowAnswers()" class="answers-wrapper">
-        <div *ngIf="isInputQuestion()" class="question-input-wrapper">
-            <form (submit)="inputSubmit()">
-                <div class="form-group">
-                    <input type="text" name="inputAnswer" [(ngModel)]="inputAnswer">
-                </div>
-
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+    <div class="question-content-wrapper">
+        <div class="question-content">
+            <h5 [innerHTML]="question?.content"></h5>
         </div>
 
-        <div *ngIf="isMultipleQuestion()" class="question-multiple-wrapper">
-            <app-answer *ngFor="let answer of question?.answers"
-                        [answer]="answer"
-                        (click)="this.checkMultipleAnswer(answer)"
-            ></app-answer>
-        </div>            
-    </div>
+        <app-reaction *ngIf="reaction" [reaction]="reaction"></app-reaction>
+        
+        <div *ngIf="shouldShowAnswers()" class="answers-wrapper">
+            <div *ngIf="isInputQuestion()" class="question-input-wrapper">
+                <form (submit)="inputSubmit()">
+                    <div class="form-group">
+                        <input type="text" name="inputAnswer" [(ngModel)]="inputAnswer" autocomplete="off">
+                    </div>
 
-    <div *ngIf="!shouldShowAnswers()" class="question-continue">
-        <button (click)="nextQuestion()" type="submit" class="btn btn-success">Next Question</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+
+            <div *ngIf="isMultipleQuestion()" class="question-multiple-wrapper">
+                <app-answer *ngFor="let answer of question?.answers"
+                            [answer]="answer"
+                            (click)="this.checkMultipleAnswer(answer)"
+                ></app-answer>
+            </div>            
+        </div>
+
+        <div *ngIf="!shouldShowAnswers()" class="question-continue">
+            <button (click)="nextQuestion()" type="submit" class="btn btn-success">Next Question</button>
+        </div>
     </div>
 </div>

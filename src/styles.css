@@ -20,7 +20,7 @@ button {
     font-size: inherit;
     background: none;
     cursor: pointer;
-    padding: 25px 80px;
+    padding: 25px 25px;
     display: inline-block;
     margin: 15px 30px;
     letter-spacing: 1px;
@@ -30,6 +30,7 @@ button {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+    width: 300px;
 }
 
 button:hover {
