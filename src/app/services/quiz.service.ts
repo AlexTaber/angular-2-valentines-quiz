@@ -8,7 +8,6 @@ import { Reaction } from '../models/reaction';
 
 export class QuizService {
     quiz: Quiz;
-    activeQuestionIndex = 0;
 
     constructor() {
         this.setQuiz();
@@ -45,7 +44,8 @@ export class QuizService {
                 defaultReaction: new Reaction({content: `Hmm, so sorry. This unfathomably romantic Valentines Day quiz
                                                          is intended for Kim Castelli.`,
                                                type: 'incorrect'}),
-                required: true
+                required: true,
+                attribute: 'participant'
             }),
             new Question({
                 content: 'How much wine was spilt on our first date?',
@@ -57,13 +57,5 @@ export class QuizService {
                 required: false
             })
         ];
-    }
-
-    getActiveQuestion() {
-        return this.quiz.questions[this.activeQuestionIndex];
-    }
-
-    incrementQuestion() {
-        this.activeQuestionIndex = (this.activeQuestionIndex + 1) % this.quiz.questions.length;
     }
 }
