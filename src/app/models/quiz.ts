@@ -27,5 +27,6 @@ export class Quiz {
 
     resetQuiz() {
         this.score = 0;
+        this.participant = undefined;
     }
 }
