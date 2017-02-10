@@ -4,7 +4,7 @@ import { Reaction } from '../../models/reaction';
 @Component({
     selector: 'app-reaction',
     templateUrl: './reaction.component.html',
-    styleUrls: ['./reaction.component.css']
+    styleUrls: ['./reaction.component.scss']
 })
 
 export class ReactionComponent {

@@ -1,0 +1,9 @@
+.app-wrapper {
+    background: #F45379; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #F45379, #DD2853); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #F45379, #DD2853); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #F45379, #DD2853); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(right, #F45379, #DD2853); /* Standard syntax */
+    min-height: 100vh;
+    padding: 8px;
+}

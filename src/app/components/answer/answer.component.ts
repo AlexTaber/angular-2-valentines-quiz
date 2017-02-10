@@ -4,7 +4,7 @@ import { Answer } from '../../models/answer';
 @Component({
     selector: 'app-answer',
     templateUrl: './answer.component.html',
-    styleUrls: ['./answer.component.css']
+    styleUrls: ['./answer.component.scss']
 })
 
 export class AnswerComponent {
