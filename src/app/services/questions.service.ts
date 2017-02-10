@@ -18,7 +18,8 @@ export class QuestionsService {
                            new Answer({content: 'Kim'}),
                            new Answer({content: 'Kimberly'}), ],
                 reactions: [ new Reaction({content: 'Good', type: 'correct', answerIndices: [0, 1, 2] }) ],
-                defaultReaction: new Reaction({content: 'bad', type: 'incorrect'})
+                defaultReaction: new Reaction({content: 'bad', type: 'incorrect'}),
+                required: true
             }),
             new Question({
                 content: 'How much wine was spilt on our first date?',
@@ -26,7 +27,8 @@ export class QuestionsService {
                 answers: [ new Answer({content: 'All the wine'}),
                            new Answer({content: 'What? What wine?'}) ],
                 reactions: [ new Reaction({content: 'Good', type: 'correct', answerIndices: [0] }) ],
-                defaultReaction: new Reaction({content: 'bad', type: 'incorrect'})
+                defaultReaction: new Reaction({content: 'bad', type: 'incorrect'}),
+                required: false
             })
         ];
     }

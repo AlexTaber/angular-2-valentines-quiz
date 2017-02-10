@@ -8,6 +8,7 @@ export class Question {
     reactions: Reaction[];
     correctAnswerIndices: number[];
     defaultReaction: Reaction;
+    required: boolean;
 
     constructor(attributes) {
         for (const key of Object.keys(attributes)) { this.setAttribute(key, attributes); }

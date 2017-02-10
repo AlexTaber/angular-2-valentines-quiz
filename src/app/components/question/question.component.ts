@@ -38,4 +38,9 @@ export class QuestionComponent {
         this.reaction = undefined;
         this.nextQuestionEmitter.emit();
     }
+
+    shouldShowAnswers() {
+        if (!this.reaction) { return true; }
+        return !this.reaction.isCorrect() && this.question.required;
+    }
 }

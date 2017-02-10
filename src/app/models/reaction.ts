@@ -25,4 +25,8 @@ export class Reaction {
     getCorrectAnswers(question: Question): Answer[] {
         return this.answerIndices.map(index => question.answers[index]);
     }
+
+    isCorrect() {
+        return this.type === 'correct';
+    }
 }

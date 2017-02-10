@@ -2,8 +2,10 @@
     <div class="question-content">
         <h3>{{ question?.content }}</h3>
     </div>
+
+    <app-reaction *ngIf="reaction" [reaction]="reaction"></app-reaction>
     
-    <div *ngIf="!reaction" class="answers-wrapper">
+    <div *ngIf="shouldShowAnswers()" class="answers-wrapper">
         <div *ngIf="isInputQuestion()" class="question-input-wrapper">
             <form (submit)="inputSubmit()">
                 <div class="form-group">
@@ -22,5 +24,7 @@
         </div>            
     </div>
 
-    <app-reaction *ngIf="reaction" [reaction]="reaction" (continueEmitter)="nextQuestion()"></app-reaction>
+    <div *ngIf="!shouldShowAnswers()" class="question-continue">
+        <button (click)="nextQuestion()" type="submit" class="btn btn-success">Next Question</button>
+    </div>
 </div>
