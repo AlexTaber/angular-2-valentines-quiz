@@ -14,17 +14,19 @@ export class QuestionsService {
             new Question({
                 content: 'Hi, what is your name?',
                 type: 'input',
-                answers: [ new Answer({content: 'Kim Castelli'}) ],
-                correctAnswerIndex: 0,
+                answers: [ new Answer({content: 'Kim Castelli'}),
+                           new Answer({content: 'Kim'}),
+                           new Answer({content: 'Kimberly'}), ],
+                correctAnswerIndices: [0, 1, 2],
                 reactions: [ new Reaction({content: 'Good', type: 'correct'}),
-                                new Reaction({content: 'bad', type: 'incorrect'})]
+                             new Reaction({content: 'bad', type: 'incorrect'})]
             }),
             new Question({
                 content: 'How much wine was spilt on our first date?',
                 type: 'multiple',
                 answers: [ new Answer({content: 'All the wine'}),
                            new Answer({content: 'What? What wine?'}) ],
-                correctAnswerIndex: 0,
+                correctAnswerIndices: [0],
                 reactions: [ new Reaction({content: 'Good', type: 'correct'}),
                              new Reaction({content: 'bad', type: 'incorrect'})]
             })

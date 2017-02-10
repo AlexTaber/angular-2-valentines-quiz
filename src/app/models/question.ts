@@ -6,7 +6,7 @@ export class Question {
     type: string;
     answers: Answer[];
     reactions: Reaction[];
-    correctAnswerIndex: number;
+    correctAnswerIndices: number[];
 
     constructor(attributes) {
         for (const key of Object.keys(attributes)) { this.setAttribute(key, attributes); }
@@ -30,11 +30,15 @@ export class Question {
         return reactionArr.length > 0 ? reactionArr[0] : undefined;
     }
 
-    isAnswer(answer): boolean {
-        return answer === this.getCorrectAnswer().content;
+    isAnswer(answer: string): boolean {
+        return this.getCorrectAnswerStrings().indexOf(answer.toUpperCase()) !== -1;
     }
 
-    getCorrectAnswer(): Answer {
-        return this.answers[this.correctAnswerIndex];
+    getCorrectAnswerStrings(): string[] {
+        return this.getCorrectAnswers().map(answer => answer.content.toUpperCase());
+    }
+
+    getCorrectAnswers(): Answer[] {
+        return this.correctAnswerIndices.map(index => this.answers[index]);
     }
 }
