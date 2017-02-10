@@ -1,0 +1,26 @@
+<div class="question-wrapper">
+    <div class="question-content">
+        {{ question?.content }}
+    </div>
+    
+    <div *ngIf="!reaction" class="answers-wrapper">
+        <div *ngIf="isInputQuestion()" class="question-input-wrapper">
+            <form (submit)="inputSubmit()">
+                <div class="form-group">
+                    <input type="text" name="inputAnswer" [(ngModel)]="inputAnswer">
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+
+        <div *ngIf="isMultipleQuestion()" class="question-multiple-wrapper">
+            <app-answer *ngFor="let answer of question?.answers"
+                        [answer]="answer"
+                        (click)="this.checkMultipleAnswer(answer)"
+            ></app-answer>
+        </div>            
+    </div>
+
+    <app-reaction *ngIf="reaction" [reaction]="reaction" (continueEmitter)="nextQuestion()"></app-reaction>
+</div>
