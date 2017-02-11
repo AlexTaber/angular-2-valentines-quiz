@@ -13,6 +13,7 @@ import { QuizReaction } from '../../models/quiz-reaction';
 export class QuizComponent {
     @Input() quiz: Quiz;
     activeQuestionIndex = 0;
+    welcomeIndex = 0;
     isOver = false;
     isStarted = false;
     reaction: QuizReaction;
@@ -81,6 +82,14 @@ export class QuizComponent {
         return this.reaction.content;
     }
 
+    checkIncrementWelcomeText() {
+        this.isLastWelcomeText() ? this.startQuiz() : this.incrementWelcomeText();
+    }
+
+    incrementWelcomeText() {
+        this.welcomeIndex ++;
+    }
+
     startQuiz() {
         this.isStarted = true;
     }
@@ -89,11 +98,24 @@ export class QuizComponent {
         this.isOver = false;
         this.isStarted = false;
         this.activeQuestionIndex = 0;
+        this.welcomeIndex = 0;
         this.reaction = undefined;
         this.quiz.resetQuiz();
     }
 
     shouldShowQuestions() {
         return this.isStarted && !this.isOver;
+    }
+
+    getWelcomeText() {
+        return this.quiz ? this.quiz.welcomeTexts[this.welcomeIndex] : 'Loading';
+    }
+
+    getWelcomeButton() {
+        return this.isLastWelcomeText() ? 'Let\'s Get Started!' : 'Continue';
+    }
+
+    isLastWelcomeText() {
+        return this.welcomeIndex === this.quiz.welcomeTexts.length - 1;
     }
 }

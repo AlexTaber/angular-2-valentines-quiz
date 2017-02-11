@@ -5,6 +5,7 @@ export class Reaction {
     content: string;
     type: string;
     answerIndices: number[];
+    imgUrl: string;
 
     constructor(attributes) {
         for (const key of Object.keys(attributes)) { this.setAttribute(key, attributes); }

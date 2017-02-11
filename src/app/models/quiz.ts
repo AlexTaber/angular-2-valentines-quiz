@@ -5,7 +5,7 @@ export class Quiz {
     participant: string;
     questions: Question[];
     title: string;
-    welcomeText: string;
+    welcomeTexts: string[];
     score = 0;
     maxScore: number;
     quizReactions: QuizReaction[];

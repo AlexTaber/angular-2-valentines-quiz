@@ -1,5 +1,7 @@
 <div class="reaction-wrapper">
-    <div class="reaction-content">
+    <div class="reaction-content copy-content">
         <p [innerHTML]="reaction?.content"></p>
     </div>
+
+    <img *ngIf="reaction.imgUrl" [src]="reaction.imgUrl">
 </div>
